@@ -7,7 +7,9 @@
     "gen": "npx prisma generate",
     "format": "npx prisma format",
     "dev:trad": "nodemon ./traditional/index.js",
-    "dev:frame": "nodemon ./framework/index.js"
+    "dev:frame": "nodemon ./framework/index.js",
+    "dev:node": "node ./traditional/script.js",
+    "dev:node2": "node ./framework/script.js"
   },
   "keywords": [],
   "author": "",
