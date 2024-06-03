@@ -1,0 +1,24 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "npx prisma migrate dev --name init",
+    "gen": "npx prisma generate",
+    "format": "npx prisma format",
+    "dev:trad": "nodemon ./traditional/index.js",
+    "dev:frame": "nodemon ./framework/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2",
+    "prisma": "^5.14.0"
+  }
+}
