@@ -1,9 +1,15 @@
 async function getData() {
     try {
-        const data = await fetch("http://127.0.0.1:10000/user");
+        const data = await fetch("http://127.0.0.1:10000/user", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        });
 
         if (!data.ok) {
-            console.log("no record found !!!");
+            console.log("no record found!!!");
         }
         ShowData(data)
     } catch (err) {
@@ -11,8 +17,9 @@ async function getData() {
     }
 }
 
+
 function ShowData(dataRes) {                            
-    console.log("data found", dataRes);
+    console.log("data found", JSON.stringify(dataRes));
 }
 
 // model User {
@@ -34,11 +41,11 @@ async function AddInput() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: "naveen@gmail.com",
+                email: "naveen2@gmail.com",
                 fname: "naveen", 
                 lname: "rajan",  
-                uname: "NR_2111",  
-                phone: 6382817065,
+                uname: "NRM_2111",  
+                phone: "6382817065",
                 password: "sting"
             })
         });
@@ -51,10 +58,30 @@ async function AddInput() {
     }
 }
 
+async function LoginUser() {
+    try {
+        const response = await fetch("http://127.0.0.1:10000/login", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: "naveen@gmail.com",
+                pass: "sting"
+            })
+        });
+
+        const data = await response.json();
+        console.log(data);
+    } catch (err) {
+        console.log("error in logging in", err);
+    }
+}
 
 function main() {
-    AddInput();
+    // AddInput();
     getData();
+    // LoginUser();
 }
 
 main();
