@@ -1,11 +1,10 @@
 async function getData() {
     try {
         const data = await fetch("http://127.0.0.1:10000/user", {
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({})
         });
 
         if (!data.ok) {

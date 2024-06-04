@@ -49,7 +49,7 @@ const server = http.createServer(async (request, response) => {
                 response.end(JSON.stringify({ error: "Internal Server Error" }));
             }
         });
-    } else if (request.method === "POST" && request.url === "/user") {
+    } else if (request.method === "GET" && request.url === "/user") {
         try {
             const data = await Prisma.user.findMany();
             response.statusCode = 200;
