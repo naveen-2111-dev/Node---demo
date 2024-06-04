@@ -1,24 +1,28 @@
 async function getData() {
     try {
-        const data = await fetch("http://127.0.0.1:10000/user", {
+        const datas = await fetch("http://127.0.0.1:10000/user", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
             },
         });
+        console.log("Fetched Users:", datas);
 
-        if (!data.ok) {
+        if (!datas.ok) {
             console.log("no record found!!!");
+            return;
         }
+
+        const data = await datas.text();
+        console.log(data,"2")
         ShowData(data)
     } catch (err) {
         console.log("error", err);
     }
 }
 
-
 function ShowData(dataRes) {                            
-    console.log("data found", JSON.stringify(dataRes));
+    console.log("data found", dataRes);
 }
 
 // model User {
@@ -40,10 +44,10 @@ async function AddInput() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: "naveen2@gmail.com",
+                email: "naveen237@gmail.com",
                 fname: "naveen", 
-                lname: "rajan",  
-                uname: "NRM_2111",  
+                lname: "rajan M",  
+                uname: "NRE_2111",  
                 phone: "6382817065",
                 password: "sting"
             })
@@ -78,9 +82,13 @@ async function LoginUser() {
 }
 
 function main() {
-    // AddInput();
+    AddInput();
     getData();
-    // LoginUser();
+    LoginUser();
 }
 
-main();
+main().then(() => {
+    console.log("success-fully executed")
+}).catch((err) => {
+    console.log(err);
+})

@@ -51,11 +51,16 @@ const server = http.createServer(async (request, response) => {
         });
     } else if (request.method === "GET" && request.url === "/user") {
         try {
-            const data = await Prisma.user.findMany();
+            const data = await Prisma.user.findMany({
+                select: {
+                    username: true,
+                    email: true,
+                    phone: true,
+                }
+            });
             response.statusCode = 200;
             response.setHeader('Content-Type', 'application/json');
-            response.end(JSON.stringify({ message: "user fetched successfully" }));
-            response.end(data);
+            response.end(JSON.stringify(data));
         } catch (err) {
             response.statusCode = 500;
             response.end(JSON.stringify({ error: "Internal Server Error" }));
