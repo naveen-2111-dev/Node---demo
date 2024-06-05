@@ -76,7 +76,7 @@ const server = http.createServer(async (request, response) => {
                 const dataFromDb = await Prisma.user.findUnique({
                     where: {
                         email: data.email,
-                        password: data.password,
+                        password: data.pass,
                     }
                 });
                 if (dataFromDb) {

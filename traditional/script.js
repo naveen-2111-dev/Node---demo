@@ -87,8 +87,4 @@ function main() {
     LoginUser();
 }
 
-main().then(() => {
-    console.log("success-fully executed")
-}).catch((err) => {
-    console.log(err);
-})
+main()
